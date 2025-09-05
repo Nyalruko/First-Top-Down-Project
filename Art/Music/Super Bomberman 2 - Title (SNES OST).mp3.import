@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bnv2elsf4sd3g"
+path="res://.godot/imported/Super Bomberman 2 - Title (SNES OST).mp3-a3cd804a9a71a9ff0bbdb86b278dd0b3.mp3str"
+
+[deps]
+
+source_file="res://Art/Music/Super Bomberman 2 - Title (SNES OST).mp3"
+dest_files=["res://.godot/imported/Super Bomberman 2 - Title (SNES OST).mp3-a3cd804a9a71a9ff0bbdb86b278dd0b3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

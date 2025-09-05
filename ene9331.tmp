@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7lhkeojyxdbr"]
+
+[ext_resource type="Script" path="res://enemy spawner.gd" id="1_7p1wo"]
+[ext_resource type="PackedScene" uid="uid://71eect6ojtxl" path="res://enemy.tscn" id="2_wiibm"]
+[ext_resource type="PackedScene" uid="uid://b3a5py3eqnuom" path="res://enemy_2.tscn" id="3_vdgsk"]
+
+[node name="enemy spawner" type="Node2D"]
+script = ExtResource("1_7p1wo")
+enemy_instance = ExtResource("2_wiibm")
+enemy_instance2 = ExtResource("3_vdgsk")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Enemy Choosing" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Enemy Choosing" to="." method="_on_enemy_choosing_timeout"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://31dfwhrfv362"
+path="res://.godot/imported/Game Over： Castlevania (NES).mp3-2152def8421dfd71631f5d350e69fa86.mp3str"
+
+[deps]
+
+source_file="res://Art/Music/Game Over： Castlevania (NES).mp3"
+dest_files=["res://.godot/imported/Game Over： Castlevania (NES).mp3-2152def8421dfd71631f5d350e69fa86.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

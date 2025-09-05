@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://71eect6ojtxl"]
+
+[ext_resource type="Texture2D" uid="uid://bhbly08gina1x" path="res://Art/CIV Skeleton2.png" id="1_5jdww"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_g0agx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qksdl"]
+radius = 16.0
+height = 56.0
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_g0agx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5jdww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_qksdl")

@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtwmrjo3pi1uo"]
+
+[ext_resource type="Script" path="res://character.gd" id="1_bxy32"]
+[ext_resource type="Texture2D" uid="uid://c07lwsfejwgon" path="res://Art/ContraGuyTopDown/ContraGuyTopDownIdle.png" id="2_0wvrt"]
+[ext_resource type="Texture2D" uid="uid://co7he6h84dwpx" path="res://Art/ContraGuyTopDown/ContraGuyTopDownWalk1.png" id="3_r716p"]
+[ext_resource type="Texture2D" uid="uid://ih1l8tgs0nr1" path="res://Art/ContraGuyTopDown/ContraGuyTopDownWalk2.png" id="4_4ol6s"]
+[ext_resource type="Texture2D" uid="uid://bkwboubp3duu8" path="res://Art/ContraGuyTopDown/ContraGuyTopDownWalk3.png" id="5_603pw"]
+[ext_resource type="AudioStream" uid="uid://duqn1uwllnb8r" path="res://Art/Sound Effects/762x54r Single MP3.mp3" id="6_46evf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ltfac"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0wvrt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_r716p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4ol6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_603pw")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d21fy"]
+size = Vector2(130, 129)
+
+[node name="Character" type="CharacterBody2D"]
+script = ExtResource("1_bxy32")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.8147e-06, -0.499998)
+rotation = 1.5708
+scale = Vector2(5.65217, 4.7037)
+sprite_frames = SubResource("SpriteFrames_ltfac")
+animation = &"idle"
+speed_scale = 1.27
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_d21fy")
+
+[node name="Barrel" type="Node2D" parent="."]
+position = Vector2(64, -40)
+
+[node name="Weapon Cooldown" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Bang" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_46evf")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Weapon Cooldown" to="." method="_on_weapon_cooldown_timeout"]

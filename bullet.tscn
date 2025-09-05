@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckglmewxvkyho"]
+
+[ext_resource type="Script" path="res://Bullet.gd" id="1_jlkno"]
+[ext_resource type="Texture2D" uid="uid://cl4t2fwv8hlox" path="res://Art/Contrabullet.png" id="2_y6aoc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4yugc"]
+radius = 19.0
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_jlkno")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_y6aoc")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Painbox" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_4yugc")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

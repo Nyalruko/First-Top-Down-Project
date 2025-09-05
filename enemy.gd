@@ -1,0 +1,18 @@
+extends CharacterBody2D
+
+
+const SPEED = 100.0
+var player : Node2D
+signal Killed
+
+func _physics_process(delta):
+	var direction = (player.global_position - global_position).normalized()
+	look_at(global_position + direction) #Makes the Node rotate towards the direction of the player
+	velocity = direction * SPEED
+	move_and_slide()
+
+
+
+func _on_hitbox_area_entered(area):
+	emit_signal("Killed") #Tells script that it died
+	queue_free() #Deletes the node

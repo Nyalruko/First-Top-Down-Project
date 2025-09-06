@@ -13,8 +13,8 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#UI.set_process_mode(UI.PROCESS_MODE_DISABLED)
-	game_over.hide() #Hides the Game Over Texture
-	start.show() #Shows the Start Texture
+	#game_over.hide() #Hides the Game Over Texture
+	#start.show() #Shows the Start Texture
 	spawner.set_process_mode(spawner.PROCESS_MODE_DISABLED) #Disables the spawner scene
 	player.set_process_mode(player.PROCESS_MODE_DISABLED) #Disables the player scene
 	player.hide() #Hides the player scene
@@ -36,7 +36,7 @@ func _end_game():
 
 func _on_character_died():
 	print ("Died") #Prints Died to see if the signal works
-	game_over.show() #Shows the Game Over Texture
+	$UI.game_done()  #Shows the Game Over Texture
 	#UI.set_process_mode(UI.PROCESS_MODE_DISABLED)
 	spawner.set_process_mode(spawner.PROCESS_MODE_DISABLED) #Disables the Spawner Scene
 	spawner.hide() #Hides the Spawner Scene
@@ -46,10 +46,15 @@ func _on_character_died():
 	game_over_music.play() #Plays the Game over music
 	await get_tree().create_timer(10).timeout #Lets the game wait until the Game Over music has finished playing
 	game_over_music.stop() #Stops the Game over music
-	game_over.hide() #Hides the Game over Texture
-	start.show() #Shows the Start Button
+	#$UI.game_over.hide() #Hides the Game over Texture
+	#$UI.start.show() #Shows the Start Button
+	get_tree().reload_current_scene()
 
 
 func _on_start_pressed():
-	start.hide() #Hides the Start Button
+	#start.hide() #Hides the Start Button
+	#new_game() #Starts the New Game function
+	pass
+
+func _on_ui_new_game():
 	new_game() #Starts the New Game function

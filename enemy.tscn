@@ -1,25 +1,42 @@
-[gd_scene load_steps=5 format=3 uid="uid://71eect6ojtxl"]
+[gd_scene load_steps=7 format=3 uid="uid://71eect6ojtxl"]
 
-[ext_resource type="Texture2D" uid="uid://bhbly08gina1x" path="res://Art/CIV Skeleton2.png" id="1_5jdww"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_g0agx"]
+[ext_resource type="Texture2D" uid="uid://cvj2d083cfpp1" path="res://Art/Enemies/enemy_ball.png" id="2_56xre"]
+[ext_resource type="Texture2D" uid="uid://bpx4jfr3kt7hb" path="res://Art/Enemies/enemy_ball2.png" id="3_n0ima"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b1m3c"]
-radius = 24.0
-height = 100.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_gpn8c"]
+radius = 41.1947
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iats3"]
-radius = 24.0
-height = 99.0
+[sub_resource type="SpriteFrames" id="SpriteFrames_mvth4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_56xre")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n0ima")
+}],
+"loop": true,
+"name": &"roll",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6eomb"]
+radius = 41.512
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_g0agx")
 
 [node name="Painbox" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_b1m3c")
+shape = SubResource("CircleShape2D_gpn8c")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("1_5jdww")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_mvth4")
+animation = &"roll"
+frame_progress = 0.300696
+speed_scale = 2.0
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -27,6 +44,6 @@ collision_mask = 2
 
 [node name="Hurtbox" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -0.5)
-shape = SubResource("CapsuleShape2D_iats3")
+shape = SubResource("CircleShape2D_6eomb")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

@@ -1,13 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhw6uvntk6ynb"]
+[gd_scene load_steps=8 format=3 uid="uid://bhw6uvntk6ynb"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_m3dpu"]
-[ext_resource type="Texture2D" uid="uid://bv3mr6nyb3jv5" path="res://Art/GameOver.png" id="2_ag83t"]
 [ext_resource type="PackedScene" uid="uid://b7lhkeojyxdbr" path="res://enemy_spawner.tscn" id="2_icdc0"]
-[ext_resource type="Texture2D" uid="uid://dqs7q6bphtj2e" path="res://Art/Start.png" id="3_e45pj"]
 [ext_resource type="Texture2D" uid="uid://b063l8p3u63sh" path="res://Art/floor.png" id="4_hy7sr"]
 [ext_resource type="AudioStream" uid="uid://bnv2elsf4sd3g" path="res://Art/Music/Super Bomberman 2 - Title (SNES OST).mp3" id="5_cyokd"]
 [ext_resource type="PackedScene" uid="uid://dtwmrjo3pi1uo" path="res://character.tscn" id="5_swuj0"]
 [ext_resource type="AudioStream" uid="uid://31dfwhrfv362" path="res://Art/Music/Game Over： Castlevania (NES).mp3" id="7_cg8am"]
+[ext_resource type="PackedScene" uid="uid://t15xinwh5xyw" path="res://ui.tscn" id="7_slgd2"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_m3dpu")
@@ -15,38 +14,13 @@ script = ExtResource("1_m3dpu")
 [node name="Background" type="TextureRect" parent="."]
 z_index = -400
 texture_repeat = 2
-offset_left = 3.0
-offset_top = 24.0
-offset_right = 1098.0
-offset_bottom = 650.0
-texture = ExtResource("4_hy7sr")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -561.5
-offset_top = -173.0
-offset_right = 561.5
-offset_bottom = 173.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="GameOver" type="TextureRect" parent="CanvasLayer/CenterContainer"]
-layout_mode = 2
-
-[node name="GameOverTexture" type="Sprite2D" parent="CanvasLayer/CenterContainer/GameOver"]
-position = Vector2(12, -6)
-scale = Vector2(0.661458, 0.981818)
-texture = ExtResource("2_ag83t")
-
-[node name="Start" type="TextureButton" parent="CanvasLayer/CenterContainer"]
-layout_mode = 2
-texture_normal = ExtResource("3_e45pj")
+texture = ExtResource("4_hy7sr")
+stretch_mode = 1
 
 [node name="Character" parent="." instance=ExtResource("5_swuj0")]
 position = Vector2(139, 287)
@@ -64,5 +38,8 @@ stream = ExtResource("5_cyokd")
 [node name="GameOverMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_cg8am")
 
-[connection signal="pressed" from="CanvasLayer/CenterContainer/Start" to="." method="_on_start_pressed"]
+[node name="UI" parent="." instance=ExtResource("7_slgd2")]
+
 [connection signal="Died" from="Character" to="." method="_on_character_died"]
+[connection signal="Died" from="Character" to="UI" method="_on_character_died"]
+[connection signal="new_game" from="UI" to="." method="_on_ui_new_game"]

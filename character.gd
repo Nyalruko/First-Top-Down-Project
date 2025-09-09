@@ -31,6 +31,9 @@ func move_character():
 		ContraGuyTopDown.play("walk")
 	else:
 		ContraGuyTopDown.play("idle")
+	if Input.is_action_pressed("Move Backwards"):
+		look_at(global_position - direction)
+		velocity *= 0.7
 	move_and_slide()
 
 func shoot_bullet():

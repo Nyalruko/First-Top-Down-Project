@@ -1,9 +1,13 @@
 extends CharacterBody2D
 
+class_name Bullet
+
 var pos : Vector2
 var rota : float
 var dir : float
-var speed = 500
+
+@export var speed = 500
+@export var damage = 10
 
 func _ready():
 	global_position = pos #Sets position of the bullet

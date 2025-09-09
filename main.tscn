@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bhw6uvntk6ynb"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_m3dpu"]
+[ext_resource type="Texture2D" uid="uid://cv52i3nuxqhqg" path="res://Art/Backgrounds/metal_floor3.png" id="2_3pga8"]
 [ext_resource type="PackedScene" uid="uid://b7lhkeojyxdbr" path="res://enemy_spawner.tscn" id="2_icdc0"]
-[ext_resource type="Texture2D" uid="uid://b063l8p3u63sh" path="res://Art/floor.png" id="4_hy7sr"]
 [ext_resource type="AudioStream" uid="uid://bnv2elsf4sd3g" path="res://Art/Music/Super Bomberman 2 - Title (SNES OST).mp3" id="5_cyokd"]
 [ext_resource type="PackedScene" uid="uid://dtwmrjo3pi1uo" path="res://character.tscn" id="5_swuj0"]
 [ext_resource type="AudioStream" uid="uid://31dfwhrfv362" path="res://Art/Music/Game Over： Castlevania (NES).mp3" id="7_cg8am"]
@@ -14,12 +14,19 @@ script = ExtResource("1_m3dpu")
 [node name="Background" type="TextureRect" parent="."]
 z_index = -400
 texture_repeat = 2
+layout_direction = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -7589.0
+offset_top = -5686.0
+offset_right = -3154.0
+offset_bottom = -2651.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_hy7sr")
+scale = Vector2(3, 3)
+texture = ExtResource("2_3pga8")
+expand_mode = 1
 stretch_mode = 1
 
 [node name="Character" parent="." instance=ExtResource("5_swuj0")]
@@ -42,4 +49,5 @@ stream = ExtResource("7_cg8am")
 
 [connection signal="Died" from="Character" to="." method="_on_character_died"]
 [connection signal="Died" from="Character" to="UI" method="_on_character_died"]
+[connection signal="child_exiting_tree" from="enemy spawner" to="UI" method="_on_enemy_spawner_child_exiting_tree"]
 [connection signal="new_game" from="UI" to="." method="_on_ui_new_game"]

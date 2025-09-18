@@ -61,5 +61,7 @@ wait_time = 0.15
 [node name="Bang" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_46evf")
 
-[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Weapon Cooldown" to="." method="_on_weapon_cooldown_timeout"]

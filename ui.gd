@@ -5,6 +5,7 @@ signal new_game
 var score = 0
 
 func _ready():
+	$Health.value = 100
 	$"Game Over".hide()
 	$Start.show()
 
@@ -27,3 +28,8 @@ func _on_enemy_spawner_child_exiting_tree(node):
 	$Score.text = str(score)
 	if score == 69:
 		$Noice.play()
+
+
+func _on_character_health_lost():
+	$Health.value -= 10
+	

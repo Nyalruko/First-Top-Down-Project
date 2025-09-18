@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 @onready var ContraGuyTopDown = $AnimatedSprite2D
 
 var bullet_scene = preload("res://bullet.tscn")
@@ -7,7 +9,9 @@ var bullet_scene = preload("res://bullet.tscn")
 var direction : Vector2 = Vector2 (0,0)
 var movement_speed : int = 300
 var can_shoot = true
+var HEALTH = 100
 
+signal Health_Lost
 signal Died 
 
 # Called when the node enters the scene tree for the first time.
@@ -43,9 +47,6 @@ func shoot_bullet():
 	bullet.rota = global_rotation #Tells the bullet how to be rotated
 	get_parent().add_child(bullet) #Spawns instance of a bullet
 
-func _on_hitbox_body_entered(body):
-	emit_signal("Died") #Tells the main node to end the game
-
 func bang_sound(from_position = 0.0):
 	randomize()
 	$Bang.pitch_scale = randf_range(0.9, 1.1)
@@ -53,3 +54,11 @@ func bang_sound(from_position = 0.0):
 
 func _on_weapon_cooldown_timeout():
 	can_shoot = true #Allows to fire a bullet again
+
+
+func _on_hitbox_area_entered(area):
+	if area.get_parent() is Melee_Enemy:
+		HEALTH -= 10
+		emit_signal ("Health_Lost")
+	if HEALTH <= 0:
+		emit_signal("Died") #Tells the main node to end the game

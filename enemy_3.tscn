@@ -1,46 +1,48 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3a5py3eqnuom"]
+[gd_scene load_steps=6 format=3 uid="uid://bh7gm3nb88gam"]
 
-[ext_resource type="Texture2D" uid="uid://b8wmtdwp53qe2" path="res://Art/Skullside.png" id="1_6e7aj"]
-[ext_resource type="Script" path="res://melee_enemy_class.gd" id="1_iriha"]
+[ext_resource type="Script" path="res://melee_enemy_class.gd" id="1_kggck"]
+[ext_resource type="Texture2D" uid="uid://6m2wu17vloxj" path="res://icon.svg" id="2_sxcxu"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6toyw"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_d0l6v"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_6e7aj")
+"texture": ExtResource("2_sxcxu")
 }],
 "loop": true,
-"name": &"move",
+"name": &"roll",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6jirw"]
-size = Vector2(112, 112)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykafx"]
+size = Vector2(129, 129)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvivi"]
-size = Vector2(112, 112)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_on8u4"]
+size = Vector2(129, 129)
 
-[node name="Enemy 2" type="CharacterBody2D"]
-script = ExtResource("1_iriha")
+[node name="Enemy_3" type="CharacterBody2D"]
+script = ExtResource("1_kggck")
+SPEED = 200.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-rotation = 3.14159
-scale = Vector2(7, 7)
-sprite_frames = SubResource("SpriteFrames_6toyw")
-animation = &"move"
-flip_h = true
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_d0l6v")
+animation = &"roll"
+speed_scale = 2.0
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
 [node name="Hurtbox" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("RectangleShape2D_6jirw")
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_ykafx")
 
 [node name="Painbox" type="Area2D" parent="."]
 
 [node name="Killbox" type="CollisionShape2D" parent="Painbox"]
-shape = SubResource("RectangleShape2D_mvivi")
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_on8u4")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true

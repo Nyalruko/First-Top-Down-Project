@@ -29,10 +29,10 @@ func _physics_process(delta):
 	var personal_position = global_position
 	var next_path_position = pathfinding.get_next_path_position()
 	var direction = (player.global_position - global_position).normalized()
+	var var_velocity = personal_position.direction_to(next_path_position) * SPEED
 	#var direction = (next_path_position).normalized()
 	look_at(global_position + direction) #Makes the Node rotate towards the direction of the player
 	$AnimatedSprite2D.play()
-	var var_velocity = personal_position.direction_to(next_path_position) * SPEED
 	if pathfinding.avoidance_enabled:
 		pathfinding.set_velocity(var_velocity)
 	else:

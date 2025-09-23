@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhw6uvntk6ynb"]
+[gd_scene load_steps=13 format=3 uid="uid://bhw6uvntk6ynb"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_m3dpu"]
 [ext_resource type="PackedScene" uid="uid://b7lhkeojyxdbr" path="res://enemy_spawner.tscn" id="2_icdc0"]
 [ext_resource type="AudioStream" uid="uid://bnv2elsf4sd3g" path="res://Art/Music/Super Bomberman 2 - Title (SNES OST).mp3" id="5_cyokd"]
 [ext_resource type="PackedScene" uid="uid://dtwmrjo3pi1uo" path="res://character.tscn" id="5_swuj0"]
 [ext_resource type="AudioStream" uid="uid://31dfwhrfv362" path="res://Art/Music/Game Over： Castlevania (NES).mp3" id="7_cg8am"]
+[ext_resource type="AudioStream" uid="uid://yw73at5w4kt8" path="res://Art/Music/Victory Fanfare - Final Fantasy V EDITED.mp3" id="7_g3ouo"]
 [ext_resource type="PackedScene" uid="uid://t15xinwh5xyw" path="res://ui.tscn" id="7_slgd2"]
 [ext_resource type="Texture2D" uid="uid://crfhximyrsqvf" path="res://Art/Backgrounds/Dragonheart.png" id="7_wyno0"]
+[ext_resource type="PackedScene" uid="uid://bbuwxocpxa03b" path="res://server.tscn" id="8_gwmjv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_csjsq"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -200,10 +202,20 @@ stream = ExtResource("5_cyokd")
 [node name="GameOverMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_cg8am")
 
+[node name="WinningMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_g3ouo")
+
 [node name="UI" parent="." instance=ExtResource("7_slgd2")]
+
+[node name="Server" parent="." instance=ExtResource("8_gwmjv")]
+position = Vector2(1690, 3235)
+scale = Vector2(0.5, 0.5)
+disable_mode = 1
 
 [connection signal="Died" from="Character" to="." method="_on_character_died"]
 [connection signal="Died" from="Character" to="UI" method="_on_character_died"]
 [connection signal="Health_Lost" from="Character" to="UI" method="_on_character_health_lost"]
 [connection signal="child_exiting_tree" from="enemy spawner" to="UI" method="_on_enemy_spawner_child_exiting_tree"]
 [connection signal="new_game" from="UI" to="." method="_on_ui_new_game"]
+[connection signal="Armed" from="Server" to="." method="_on_server_armed"]
+[connection signal="Boom" from="Server" to="." method="_on_server_boom"]

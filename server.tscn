@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbuwxocpxa03b"]
+
+[ext_resource type="Script" path="res://server.gd" id="1_0xsn6"]
+[ext_resource type="Texture2D" uid="uid://b8l4jxdpc8n0t" path="res://Art/Objectives/TopDownServerEdite.png" id="1_2f5yd"]
+[ext_resource type="AudioStream" uid="uid://c8f8ts3nnshu0" path="res://Art/Sound Effects/MComArmed.mp3" id="3_tf76x"]
+[ext_resource type="AudioStream" uid="uid://2vws4fj0p28n" path="res://Art/Sound Effects/MComExplosion.mp3" id="4_nr03k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cakwm"]
+size = Vector2(306, 489)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ddsav"]
+radius = 410.191
+
+[node name="Server" type="StaticBody2D"]
+script = ExtResource("1_0xsn6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2f5yd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_cakwm")
+
+[node name="InteractiveArea" type="Area2D" parent="."]
+
+[node name="InteractionBox" type="CollisionShape2D" parent="InteractiveArea"]
+shape = SubResource("CircleShape2D_ddsav")
+
+[node name="Arming" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_tf76x")
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_nr03k")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="InteractiveArea" to="." method="_on_interactive_area_body_entered"]

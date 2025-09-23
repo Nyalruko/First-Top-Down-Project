@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://2vws4fj0p28n"
+path="res://.godot/imported/MComExplosion.mp3-7ab01d9f4e28040d0d0847cd1f0ecbf2.mp3str"
+
+[deps]
+
+source_file="res://Art/Sound Effects/MComExplosion.mp3"
+dest_files=["res://.godot/imported/MComExplosion.mp3-7ab01d9f4e28040d0d0847cd1f0ecbf2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

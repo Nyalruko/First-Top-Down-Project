@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yw73at5w4kt8"
+path="res://.godot/imported/Victory Fanfare - Final Fantasy V EDITED.mp3-40c6cb6102b25feae0d68b1d5c646721.mp3str"
+
+[deps]
+
+source_file="res://Art/Music/Victory Fanfare - Final Fantasy V EDITED.mp3"
+dest_files=["res://.godot/imported/Victory Fanfare - Final Fantasy V EDITED.mp3-40c6cb6102b25feae0d68b1d5c646721.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

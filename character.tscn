@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtwmrjo3pi1uo"]
+[gd_scene load_steps=10 format=3 uid="uid://dtwmrjo3pi1uo"]
 
 [ext_resource type="Script" path="res://character.gd" id="1_bxy32"]
 [ext_resource type="Texture2D" uid="uid://c07lwsfejwgon" path="res://Art/ContraGuyTopDown/ContraGuyTopDownIdle.png" id="2_0wvrt"]
@@ -35,6 +35,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d21fy"]
 size = Vector2(130, 129)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txob4"]
+size = Vector2(130, 129)
+
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_bxy32")
 
@@ -63,6 +66,10 @@ stream = ExtResource("6_46evf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_txob4")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Weapon Cooldown" to="." method="_on_weapon_cooldown_timeout"]

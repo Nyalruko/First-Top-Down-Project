@@ -8,6 +8,7 @@ extends Node2D
 @onready var spawner = $"enemy spawner"
 @onready var game_over_music = $GameOverMusic
 @onready var player = $Character
+@onready var winning_music = $WinningMusic
 
 
 # Called when the node enters the scene tree for the first time.
@@ -58,3 +59,22 @@ func _on_start_pressed():
 
 func _on_ui_new_game():
 	new_game() #Starts the New Game function
+
+
+func _on_server_boom():
+	await get_tree().create_timer(5).timeout
+	print ("Winning")
+	$UI.winning()  #Shows the Conglaturations Texture
+	spawner.set_process_mode(spawner.PROCESS_MODE_DISABLED) #Disables the Spawner Scene
+	spawner.hide() #Hides the Spawner Scene
+	player.set_process_mode(player.PROCESS_MODE_DISABLED) #Disables the Player Scene
+	player.hide() #Hides the Player scene
+	battle_music.stop() #Stops the Battle music
+	winning_music.play()
+	await get_tree().create_timer(41).timeout #Lets the game wait until the Game Over music has finished playing
+	get_tree().reload_current_scene()
+
+
+
+func _on_server_armed():
+	battle_music.stop()

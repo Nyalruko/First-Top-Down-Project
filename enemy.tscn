@@ -49,7 +49,10 @@ shape = SubResource("CircleShape2D_6eomb")
 shape = SubResource("CircleShape2D_gpn8c")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
 avoidance_enabled = true
+radius = 150.0
+neighbor_distance = 300.0
 avoidance_layers = 3
 avoidance_mask = 3
 debug_enabled = true

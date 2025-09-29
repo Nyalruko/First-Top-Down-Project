@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dr7wwg0q4a857"
-path="res://.godot/imported/edosz.ttf-5e5cf6ce785b02bf305c1c304e9e069f.fontdata"
+uid="uid://cwcfs2e7cpdqv"
+path="res://.godot/imported/gunplay rg.otf-55a01632dc8de110c4e549bbb4426b13.fontdata"
 
 [deps]
 
-source_file="res://Art/edosz.ttf"
-dest_files=["res://.godot/imported/edosz.ttf-5e5cf6ce785b02bf305c1c304e9e069f.fontdata"]
+source_file="res://Art/Fonts/gunplay rg.otf"
+dest_files=["res://.godot/imported/gunplay rg.otf-55a01632dc8de110c4e549bbb4426b13.fontdata"]
 
 [params]
 

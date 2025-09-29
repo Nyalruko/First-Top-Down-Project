@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://1ul1lt8b7kxl"]
+
+[ext_resource type="FontFile" uid="uid://cwcfs2e7cpdqv" path="res://Art/Fonts/gunplay rg.otf" id="1_0dcae"]
+[ext_resource type="Script" path="res://interaction_manager.gd" id="1_hm6ns"]
+
+[node name="InteractionManager" type="Node2D"]
+script = ExtResource("1_hm6ns")
+
+[node name="Label" type="Label" parent="."]
+z_index = 20
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.0
+offset_right = 70.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_0dcae")
+text = "Press E to interact"
+horizontal_alignment = 1
+vertical_alignment = 1

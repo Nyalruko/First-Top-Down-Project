@@ -1,17 +1,18 @@
 extends StaticBody2D
 
+@onready var interaction_area: Interaction_Area = $"Interaction Area"
+
 signal Boom
 signal Armed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	interaction_area.interact = Callable(self, "arm_server")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("Test Button"):
-		arm_server()
+	pass
 
 func arm_server():
 	emit_signal("Armed")
@@ -20,8 +21,3 @@ func arm_server():
 	$Arming.stop()
 	emit_signal("Boom")
 	$Explosion.play()
-
-func _on_interactive_area_body_entered(body):
-	pass
-	#if body.get_parent() is Player and Input.is_action_pressed("Interact"):
-		#arm_server()

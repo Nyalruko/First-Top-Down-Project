@@ -212,8 +212,6 @@ position = Vector2(1690, 3235)
 scale = Vector2(0.5, 0.5)
 disable_mode = 1
 
-[connection signal="Died" from="Character" to="." method="_on_character_died"]
-[connection signal="Died" from="Character" to="UI" method="_on_character_died"]
 [connection signal="Health_Lost" from="Character" to="UI" method="_on_character_health_lost"]
 [connection signal="child_exiting_tree" from="enemy spawner" to="UI" method="_on_enemy_spawner_child_exiting_tree"]
 [connection signal="new_game" from="UI" to="." method="_on_ui_new_game"]

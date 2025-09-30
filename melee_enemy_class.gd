@@ -5,6 +5,7 @@ class_name Melee_Enemy
 @export var SPEED = 100.0
 @export var HEALTH = 10
 @export var DAMAGE = 5
+@export var VALUE = 1
 
 @onready var pathfinding = $NavigationAgent2D
 
@@ -41,14 +42,19 @@ func _physics_process(delta):
 
 func _on_hitbox_area_entered(area):
 	if area.get_parent() is Bullet:
+		CharacterStats.Score += VALUE
 		queue_free() #Deletes the node
 
 
 func _on_painbox_area_entered(area):
 	if area.get_parent() is Player:
+		do_damage()
 		queue_free()
 
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	velocity = safe_velocity
 	pass # Replace with function body.
+
+func do_damage():
+	CharacterStats.Health -= DAMAGE

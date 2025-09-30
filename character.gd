@@ -9,10 +9,10 @@ var bullet_scene = preload("res://bullet.tscn")
 var direction : Vector2 = Vector2 (0,0)
 var movement_speed : int = 300
 var can_shoot = true
-var HEALTH = 100
+#var HEALTH = CharacterStats.Health
 
 signal Health_Lost
-signal Died 
+#signal Died 
 
 # Called when the node enters the scene tree for the first time.
 func _physics_process(delta):
@@ -57,8 +57,9 @@ func _on_weapon_cooldown_timeout():
 
 
 func _on_hitbox_area_entered(area):
-	if area.get_parent() is Melee_Enemy:
-		HEALTH -= 10
-		emit_signal ("Health_Lost")
-	if HEALTH <= 0:
-		emit_signal("Died") #Tells the main node to end the game
+	#if area.get_parent() is Melee_Enemy:
+		#HEALTH -= 10
+		#emit_signal ("Health_Lost")
+	#if CharacterStats.Health <= 0:
+		#emit_signal("Died") #Tells the main node to end the game
+		pass

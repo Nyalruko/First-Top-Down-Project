@@ -29,7 +29,8 @@ func new_game():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if CharacterStats.Health <= 0:
+		_on_character_died()
 
 func _end_game():
 	pass
@@ -37,8 +38,10 @@ func _end_game():
 
 func _on_character_died():
 	print ("Died") #Prints Died to see if the signal works
-	$UI.game_done()  #Shows the Game Over Texture
+	$UI.game_done() #Shows the Game Over Texture
 	#UI.set_process_mode(UI.PROCESS_MODE_DISABLED)
+	CharacterStats.Health = CharacterStats.Original_Health
+	CharacterStats.Score = CharacterStats.Original_Score
 	spawner.set_process_mode(spawner.PROCESS_MODE_DISABLED) #Disables the Spawner Scene
 	spawner.hide() #Hides the Spawner Scene
 	player.set_process_mode(player.PROCESS_MODE_DISABLED) #Disables the Player Scene

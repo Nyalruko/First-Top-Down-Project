@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://t15xinwh5xyw"]
+[gd_scene load_steps=5 format=3 uid="uid://t15xinwh5xyw"]
 
 [ext_resource type="Script" path="res://ui.gd" id="1_vew82"]
 [ext_resource type="FontFile" uid="uid://dr7wwg0q4a857" path="res://Art/Fonts/edosz.ttf" id="2_i456l"]
 [ext_resource type="AudioStream" uid="uid://b1u86766pew6i" path="res://Art/Music/nioceEdited.mp3" id="3_esmp8"]
+[ext_resource type="FontFile" uid="uid://cwcfs2e7cpdqv" path="res://Art/Fonts/gunplay rg.otf" id="4_1o250"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_vew82")
@@ -86,6 +87,7 @@ volume_db = 10.0
 [node name="Health" type="ProgressBar" parent="."]
 offset_right = 46.0
 offset_bottom = 646.0
+theme_override_fonts/font = ExtResource("4_1o250")
 fill_mode = 3
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
